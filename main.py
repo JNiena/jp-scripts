@@ -188,7 +188,7 @@ clean_punctuation = True
 # Enabling this will remove any bold/emphasis/italic HTML tags
 clean_word_highlight = False
 
-# Settings this will replace the word highlighting style
+# Setting this will replace the word highlighting style
 # 'b' = bold
 # 'em' = emphasis
 # 'i' = italic
