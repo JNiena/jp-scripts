@@ -69,12 +69,17 @@ def find_sentence(source, word):
 	return sentence
 
 def remove_punctuation(sentence):
-	if sentence[-1] in ["、", "。", "？", "！"]:
+	if sentence[-1] in ['、', '。', '？', '！']:
 		return sentence[:-1]
 	return sentence
 
 def remove_word_highlight(sentence):
-	sentence = re.sub(r'<(.*|\\)(b|em|i)>', '', sentence);
+	return re.sub(r'<[^>]*>', '', sentence)
+
+def replace_highlight_style(sentence, highlight_style):
+	replaceable =  ['b>', 'em>', 'i>']
+	for tag in replaceable:
+		sentence = sentence.replace(tag, '{}>'.format(highlight_style))
 	return sentence
 
 def update_sentence(note_id, sentence_field, sentence_value):
@@ -97,7 +102,7 @@ def create_query(deck, overwrite):
 		query += ' {}:re:^\s*$'.format(sentence_field)
 	return query
 
-def main(deck, word_field, sentence_field, overwrite, tag, mode, delay, source, clean_punctuation, clean_word_highlight):
+def main(deck, word_field, sentence_field, overwrite, tag, mode, delay, source, clean_punctuation, clean_word_highlight, highlight_style):
 	query = create_query(deck, overwrite)
 	note_ids = invoke('findNotes', query = query)
 
@@ -119,10 +124,12 @@ def main(deck, word_field, sentence_field, overwrite, tag, mode, delay, source, 
 		
 		if clean_word_highlight:
 			sentence = remove_word_highlight(sentence)
+		else:
+			sentence = replace_highlight_style(sentence, highlight_style)
 		
 		if not debug:
 			if tag:
-				update_tag(note_id, ["sentence_backfilled"])
+				update_tag(note_id, ['sentence_backfilled'])
 
 			update_sentence(note_id, sentence_field, sentence)
 
@@ -157,29 +164,35 @@ sentence_field = 'Sentence'
 #################################
 
 # Enabling this will overwrite cards that already have sentences
-overwrite = True
+overwrite = False
 
-# Enabling this will tag cards with "sentenced_backfilled"
+# Enabling this will tag cards with 'sentenced_backfilled'
 tag = True
 
 #############################################
 ######### Sentence Scraper Settings #########
 #############################################
 
-# Setting this to "auto" will scrape 
+# Setting this to 'auto' will scrape 
 mode = 'auto'
 
 # The time to wait between scraping each sentence
 delay = 0.5
 
 # The source that sentences will be scraped from
-source = "massif"
+source = 'massif'
 
 # Enabling this will remove final punctuation marks
 clean_punctuation = True
 
-# Enabling this will remove any bold/emphasize/italicize HTML tags
-clean_word_highlight = True
+# Enabling this will remove any bold/emphasis/italic HTML tags
+clean_word_highlight = False
+
+# Settings this will replace the word highlighting style
+# 'b' = bold
+# 'em' = emphasis
+# 'i' = italic
+highlight_style = 'b'
 
 ############################################
 ######### Debug Settings (Ignore!) #########
@@ -188,4 +201,4 @@ clean_word_highlight = True
 # Enabling this will stop cards from actually being written to
 debug = False
 
-main(deck, word_field, sentence_field, overwrite, tag, mode, delay, source, clean_punctuation, clean_word_highlight)
+main(deck, word_field, sentence_field, overwrite, tag, mode, delay, source, clean_punctuation, clean_word_highlight, highlight_style)
