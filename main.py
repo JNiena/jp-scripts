@@ -122,7 +122,7 @@ def main(deck, word_field, sentence_field, overwrite, tag, mode, delay, source, 
 		
 		if not debug:
 			if tag:
-				update_tag(["sentence_backfilled"])
+				update_tag(note_id, ["sentence_backfilled"])
 
 			update_sentence(note_id, sentence_field, sentence)
 
