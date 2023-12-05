@@ -115,7 +115,7 @@ def main(deck, word_field, sentence_field, overwrite, tag, mode, delay, source, 
 		try:
 			sentence = find_sentence(source, word)
 		except:
-			print('[Card {}/{}] Failed to find a sentence for 「{}」!'.format(i + 1, len(note_ids), word))
+			print('[Card {}/{}] Failed to find a sentence for 「{}」!\n'.format(i + 1, len(note_ids), word))
 			time.sleep(delay)
 			continue
 
@@ -135,14 +135,8 @@ def main(deck, word_field, sentence_field, overwrite, tag, mode, delay, source, 
 
 			updated += 1
 
-		print('[Card {}/{}] Updated the sentence for 「{}」 with 「{}」!'.format(i + 1, len(note_ids), word, sentence))
-
-		if mode == 'manual':
-			input()
-
-		elif mode == 'auto':
-			print()
-			time.sleep(delay)
+		print('[Card {}/{}] Updated the sentence for 「{}」 with 「{}」!\n'.format(i + 1, len(note_ids), word, sentence))
+		time.sleep(delay)
 
 	print('[Finished] Updated {}/{} cards!'.format(updated, len(note_ids)))
 
@@ -172,9 +166,6 @@ tag = True
 #############################################
 ######### Sentence Scraper Settings #########
 #############################################
-
-# Setting this to 'auto' will scrape 
-mode = 'auto'
 
 # The time to wait between scraping each sentence
 delay = 0.5
