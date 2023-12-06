@@ -102,7 +102,7 @@ def create_query(deck, overwrite):
 		query += ' {}:re:^\s*$'.format(sentence_field)
 	return query
 
-def main(deck, word_field, sentence_field, overwrite, tag, mode, delay, source, clean_punctuation, clean_word_highlight, highlight_style):
+def main(deck, word_field, sentence_field, overwrite, tag, delay, source, clean_punctuation, clean_word_highlight, highlight_style):
 	query = create_query(deck, overwrite)
 	note_ids = invoke('findNotes', query = query)
 
@@ -192,4 +192,4 @@ highlight_style = 'b'
 # Enabling this will stop cards from actually being written to
 debug = False
 
-main(deck, word_field, sentence_field, overwrite, tag, mode, delay, source, clean_punctuation, clean_word_highlight, highlight_style)
+main(deck, word_field, sentence_field, overwrite, tag, delay, source, clean_punctuation, clean_word_highlight, highlight_style)
