@@ -97,9 +97,9 @@ def update_tag(note_id, tags):
 	})
 
 def create_query(deck, overwrite):
-	query = 'deck:{}'.format(deck)
+	query = 'deck:"{}"'.format(deck)
 	if not overwrite:
-		query += ' {}:re:^\s*$'.format(sentence_field)
+		query += ' "{}":re:^\s*$'.format(sentence_field)
 	return query
 
 def main(deck, word_field, sentence_field, overwrite, tag, delay, source, clean_punctuation, clean_word_highlight, highlight_style):
