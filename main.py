@@ -116,6 +116,7 @@ def main(deck, word_field, sentence_field, overwrite, tag, delay, source, clean_
 			sentence = find_sentence(source, word)
 		except:
 			print('[Card {}/{}] Failed to find a sentence for 「{}」!\n'.format(i + 1, len(note_ids), word))
+			update_tag(note_id, ['no_sentence'])
 			time.sleep(delay)
 			continue
 
