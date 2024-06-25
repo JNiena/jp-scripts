@@ -96,14 +96,14 @@ def update_tag(note_id, tags):
 		'tags': tags
 	})
 
-def create_query(deck, overwrite):
+def create_query(deck, sentence_field, overwrite):
 	query = 'deck:"{}"'.format(deck)
 	if not overwrite:
 		query += ' "{}":re:^\s*$'.format(sentence_field)
 	return query
 
 def main(deck, word_field, sentence_field, overwrite, tag, delay, source, clean_punctuation, clean_word_highlight, highlight_style):
-	query = create_query(deck, overwrite)
+	query = create_query(deck, sentence_field, overwrite)
 	note_ids = invoke('findNotes', query = query)
 
 	updated = 0
