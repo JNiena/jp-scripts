@@ -69,3 +69,25 @@ A command line tool to scrape example sentences from Massif. This script is mean
 
 ### Example
 `python sentence_scraper.py --input words.json --word Word --sentence Sentence --exact --format none`
+
+# Adding Example Sentences
+
+Before you start, make sure to back up your deck! The commands below assume the following:
+* The deck name is `日本語`.
+* The file name to use is `fields.json`.
+* The field containing the word is `Word`.
+* The field containing the sentence is `Sentence`.
+
+First, use [get_fields.py](get_fields.py) to get all of your words into a JSON file.
+
+`python get_fields.py --deck 日本語 --output fields.json --key Word`
+
+Second, use [sentence_scraper.py](sentence_scraper.py) to add sentences to the same JSON file.
+
+`python sentence_scraper.py --input fields.json --word Word --sentence Sentence`
+
+Third, use [set_fields.py](set_fields.py) to apply the contents of the JSON file to your deck.
+
+`python set_fields.py --deck 日本語 --input fields.json --key Word --fields Sentence`
+
+**It is highly recommended to reuse the same JSON file so you don't have to re-scrape sentences for all of your words every time you rerun the commands!**
