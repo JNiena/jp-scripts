@@ -72,7 +72,7 @@ def combine_arrays(first_array, second_array, key):
 
 
 def read_file_json(path):
-    with open(path, 'r', encoding='utf-8') as file:
+    with open(path, 'w', encoding='utf-8') as file:
         try:
             return json.loads(file.read())
         except:
@@ -95,12 +95,12 @@ def main(deck, output_path, key, preview, silent, fields):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='A command line tool that allows for the extraction of Anki fields via JSON format.')
-    parser.add_argument('-d', '--deck', type=str, required=True, help='The name of the deck to query.')
-    parser.add_argument('-o', '--output', type=str, required=True, help='The path to output the JSON file.')
-    parser.add_argument('-k', '--key', type=str, required=True, help='The field used to match if the output file already exists.')
-    parser.add_argument('-p', '--preview', action='store_true', help='Preview field mappings.')
-    parser.add_argument('-s', '--silent', action='store_true', help='Disable output.')
-    parser.add_argument('-f', '--fields', type=str, required=True, nargs='+', help='The list of fields to get.')
+    parser.add_argument('--deck', type=str, required=True, help='The name of the deck to query.')
+    parser.add_argument('--output', type=str, required=True, help='The path to output the JSON file.')
+    parser.add_argument('--key', type=str, required=True, help='The field used to match if the output file already exists.')
+    parser.add_argument('--preview', action='store_true', help='Preview field mappings.')
+    parser.add_argument('--silent', action='store_true', help='Disable output.')
+    parser.add_argument('--fields', type=str, required=True, nargs='+', help='The list of fields to get.')
     args = parser.parse_args()
 
     main(args.deck, args.output, args.key, args.preview, args.silent, args.fields)
