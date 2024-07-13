@@ -86,6 +86,24 @@ A command line tool to scrape example sentences from Massif. This script is mean
 ### Example
 `python sentence_scraper.py --input words.json --word Word --sentence Sentence --exact --format none`
 
+## Vocab Optimizer
+A command line tool to tag vocab in Anki based on their relative usefulness.
+
+### Usage
+`vocab_optimizer.py [-h] --deck DECK --kanji KANJI --word WORD [--silent]`
+
+### Args
+`--deck`: The name of the deck to query. *
+
+`--kanji`: The path to inpout the kanji grid file. *
+
+`--word`: The field containing the word. *
+
+`--silent`: Disable output.
+
+### Example
+`python vocab_optimizer.py --deck 日本語 --kanji resources/kanji.json --word Word`
+
 # Adding Example Sentences
 
 Before you start, make sure to back up your deck! The commands below assume the following:
