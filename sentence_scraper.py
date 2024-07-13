@@ -56,7 +56,7 @@ if __name__ == "__main__":
     parser.add_argument('-i', '--input', type=str, required=True, help='The path to input the words.')
     parser.add_argument('-o', '--overwrite', action='store_true', help='Overwrite existing sentences.')
     parser.add_argument('-s', '--silent', action='store_true', help='Disable output.')
-    parser.add_argument('-f', '--format', choices=['none', 'bold', 'italic'], required=False, help='The word format style to use.')
+    parser.add_argument('-f', '--format', choices=['none', 'bold', 'italic'], required=False, default='bold', help='The word format style to use.')
     parser.add_argument('-e', '--exact', action='store_true', help='Match the exact expression.')
     args = parser.parse_args()
 
