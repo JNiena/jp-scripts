@@ -104,6 +104,23 @@ A command line tool to tag vocab in Anki based on their relative usefulness.
 ### Example
 `python vocab_optimizer.py --deck 日本語 --kanji resources/kanji.json --word Word`
 
+
+## Vocab Finder
+A command line tool that finds interest words.
+
+### Usage
+`vocab_finder.py [-h] --input INPUT --output OUTPUT --kanji KANJI`
+
+### Args
+`--input`: The path to input the book text file. *
+
+`--output`: The path to output the interest words. *
+
+`--kanji`: The path to input the kanji grid file. *
+
+### Example
+`python vocab_finder.py --input book.txt --output words.txt --kanji resources/kanji.json`
+
 # Adding Example Sentences
 
 Before you start, make sure to back up your deck! The commands below assume the following:
