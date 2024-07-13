@@ -47,6 +47,9 @@ def main(deck, input_path, key, overwrite, preview, silent, fields):
                 print(f'\n{matched}/{len(notes)}\nMatched "{object_data[key]}" from |{key}| on note [{note['noteId']}]')
 
             for field in fields:
+                if field not in object_data:
+                    continue
+
                 if overwrite or note['fields'][field]['value'] == '':
                     if not preview:
                         invoke('updateNote', note={'id': note['noteId'], 'fields': {field: object_data[field]}})
