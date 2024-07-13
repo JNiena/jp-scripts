@@ -28,18 +28,18 @@ def find_sentence(word, format_style, exact):
     return data['results'][0]['text']
 
 
-def main(input_path, overwrite, silent, format_style, exact):
+def main(input_path, word_field, sentence_field, overwrite, silent, format_style, exact):
     with open(input_path, 'r', encoding='utf-8') as file:
         array_data = json.loads(file.read())
 
     for index, object_data in enumerate(array_data):
-        word = object_data['Word']
+        word = object_data[word_field]
 
-        if 'Sentence' not in object_data or overwrite:
+        if sentence_field not in object_data or overwrite:
             sentence = find_sentence(word, format_style, exact)
 
             if sentence != '':
-                object_data['Sentence'] = sentence
+                object_data[sentence_field] = sentence
 
                 with open(input_path, 'w', encoding='utf-8') as file:
                     file.write(json.dumps(array_data, indent=4))
@@ -53,11 +53,13 @@ def main(input_path, overwrite, silent, format_style, exact):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='A command line tool to scrape example sentences from Massif.')
-    parser.add_argument('-i', '--input', type=str, required=True, help='The path to input the words.')
-    parser.add_argument('-o', '--overwrite', action='store_true', help='Overwrite existing sentences.')
-    parser.add_argument('-s', '--silent', action='store_true', help='Disable output.')
-    parser.add_argument('-f', '--format', choices=['none', 'bold', 'italic'], required=False, default='bold', help='The word format style to use.')
-    parser.add_argument('-e', '--exact', action='store_true', help='Match the exact expression.')
+    parser.add_argument('--input', type=str, required=True, help='The path to input the words.')
+    parser.add_argument('--word', type=str, required=True, help='The field containing the word.')
+    parser.add_argument('--sentence', type=str, required=True, help='The field to write the sentence.')
+    parser.add_argument('--overwrite', action='store_true', help='Overwrite existing sentences.')
+    parser.add_argument('--silent', action='store_true', help='Disable output.')
+    parser.add_argument('--format', choices=['none', 'bold', 'italic'], required=False, default='bold', help='The word format style to use.')
+    parser.add_argument('--exact', action='store_true', help='Match the exact word.')
     args = parser.parse_args()
 
-    main(args.input, args.overwrite, args.silent, args.format, args.exact)
+    main(args.input, args.word, args.sentence, args.overwrite, args.silent, args.format, args.exact)
