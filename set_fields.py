@@ -59,13 +59,13 @@ def main(deck, input_path, key, overwrite, preview, silent, fields):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='A command line tool that allows for the insertion of Anki fields via JSON format.')
-    parser.add_argument('-d', '--deck', type=str, required=True, help='The name of the deck to query.')
-    parser.add_argument('-i', '--input', type=str, required=True, help='The path to input the JSON file.')
-    parser.add_argument('-k', '--key', type=str, required=True, help='The field used to match.')
-    parser.add_argument('-o', '--overwrite', action='store_true', help='Overwrite already populated fields.')
-    parser.add_argument('-p', '--preview', action='store_true', help='Preview field mappings.')
-    parser.add_argument('-s', '--silent', action='store_true', help='Disable output.')
-    parser.add_argument('-f','--fields',type=str,required=True,nargs='+',help='The list of fields to set.')
+    parser.add_argument('--deck', type=str, required=True, help='The name of the deck to query.')
+    parser.add_argument('--input', type=str, required=True, help='The path to input the JSON file.')
+    parser.add_argument('--key', type=str, required=True, help='The field used to match.')
+    parser.add_argument('--overwrite', action='store_true', help='Overwrite already populated fields.')
+    parser.add_argument('--preview', action='store_true', help='Preview field mappings.')
+    parser.add_argument('--silent', action='store_true', help='Disable output.')
+    parser.add_argument('--fields',type=str,required=True,nargs='+',help='The list of fields to set.')
     args = parser.parse_args()
 
     main(args.deck, args.input, args.key, args.overwrite, args.preview, args.silent, args.fields)
