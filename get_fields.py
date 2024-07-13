@@ -28,14 +28,14 @@ def invoke(action, **params):
 
 
 def get_fields(deck, fields, log=False):
-    note_ids = invoke('findNotes', query=f'deck:{deck}')
+    note_ids = invoke('findNotes', query=f'deck:"{deck}"')
     notes = invoke('notesInfo', notes=note_ids)
 
     array_data = []
 
     for index, note in enumerate(notes):
         if log:
-            print(f'\n{index + 1}/{len(note_ids)}\nGathered fields on note [{note['noteId']}]')
+            print(f'\n{index + 1}/{len(notes)}\nGathered fields on note [{note['noteId']}]')
 
         object_data = {}
 
