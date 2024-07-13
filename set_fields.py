@@ -28,7 +28,7 @@ def invoke(action, **params):
 
 
 def main(deck, input_path, key, overwrite, preview, silent, fields):
-    note_ids = invoke('findNotes', query=f'deck:{deck}')
+    note_ids = invoke('findNotes', query=f'deck:"{deck}"')
     notes = invoke('notesInfo', notes=note_ids)
 
     with open(input_path, 'r', encoding='utf-8') as file:
@@ -68,7 +68,7 @@ if __name__ == "__main__":
     parser.add_argument('--overwrite', action='store_true', help='Overwrite already populated fields.')
     parser.add_argument('--preview', action='store_true', help='Preview field mappings.')
     parser.add_argument('--silent', action='store_true', help='Disable output.')
-    parser.add_argument('--fields',type=str,required=True,nargs='+',help='The list of fields to set.')
+    parser.add_argument('--fields', type=str, required=True, nargs='+', help='The list of fields to set.')
     args = parser.parse_args()
 
     main(args.deck, args.input, args.key, args.overwrite, args.preview, args.silent, args.fields)
