@@ -1,5 +1,21 @@
 # Anki Scripts
 
+## Get Words
+A command line tool to export all words from an Anki deck into a text file.
+
+### Usage
+`get_words.py [-h] --deck DECK --output OUTPUT --word WORD`
+
+### Args
+`--deck`: The name of the deck to query. *
+
+`--output`: The path to output the TXT file. *
+
+`--word`: The field containing the word. *
+
+### Example
+`python get_words.py --deck 日本語 --output words.txt --word Word`
+
 ## Get Fields
 A command line tool that allows for the extraction of Anki fields via JSON format. This script is meant to be used together with [set_fields.py](set_fields.py).
 
