@@ -8,7 +8,7 @@ import requests
 def find_sentence(word, format_style, exact):
     response = requests.get(
         url = 'https://massif.la/ja/search',
-        timeout = 10,
+        timeout = 30,
         params = {
             'q': f'"{word}"' if exact else word,
             'fmt': 'json'
