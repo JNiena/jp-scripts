@@ -72,7 +72,7 @@ def combine_arrays(first_array, second_array, key):
 
 
 def read_file_json(path):
-    with open(path, 'w', encoding='utf-8') as file:
+    with open(path, 'r', encoding='utf-8') as file:
         try:
             return json.loads(file.read())
         except:
