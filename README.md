@@ -95,7 +95,7 @@ A command line tool to tag vocab in Anki based on their relative usefulness.
 ### Args
 `--deck`: The name of the deck to query. *
 
-`--kanji`: The path to inpout the kanji grid file. *
+`--kanji`: The path to input the kanji grid file. *
 
 `--word`: The field containing the word. *
 
