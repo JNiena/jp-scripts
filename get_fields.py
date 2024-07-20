@@ -43,7 +43,7 @@ def get_fields(deck, fields, log=False):
             object_data[field] = note['fields'][field]['value']
 
             if log:
-                print(f'\tSaved |{field}| as "{object_data[field]}"')
+                print(f'\tSaved |{field}| as "{repr(object_data[field])}"')
 
         array_data.append(object_data)
 
