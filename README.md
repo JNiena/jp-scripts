@@ -42,7 +42,7 @@ A command line tool that allows for the extraction of Anki fields via JSON forma
 A command line tool that allows for the insertion of Anki fields via JSON format. This script is meant to be used together with [get_fields.py](get_fields.py).
 
 ### Usage
-`set_fields.py [-h] --deck DECK --input INPUT --key KEY [--overwrite] [--preview] [--silent] --fields FIELDS [FIELDS ...]`
+`set_fields.py [-h] --deck DECK --input INPUT --key KEY [--overwrite] [--add] [--preview] [--silent] --fields FIELDS [FIELDS ...]`
 
 ### Args
 `--deck`: The name of the deck to query. *
@@ -52,6 +52,8 @@ A command line tool that allows for the insertion of Anki fields via JSON format
 `--key`: The field used to match. *
 
 `--overwrite`: Overwrite already populated fields.
+
+`--add`: Add the note if it doesn't already exist.
 
 `--preview`: Preview field mappings.
 
