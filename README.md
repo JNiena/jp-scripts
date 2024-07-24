@@ -1,4 +1,4 @@
-# Anki Scripts
+# JP Scripts
 
 ## Get Words
 A command line tool to export all words from an Anki deck into a text file.
@@ -108,7 +108,7 @@ A command line tool to tag vocab in Anki based on their relative usefulness.
 
 
 ## Vocab Finder
-A command line tool that finds interest words.
+A command line tool to find potential interest words.
 
 ### Usage
 `vocab_finder.py [-h] --input INPUT --output OUTPUT --kanji KANJI`
