@@ -72,11 +72,11 @@ def combine_arrays(first_array, second_array, key):
 
 
 def read_file_json(path):
-    with open(path, 'r', encoding='utf-8') as file:
-        try:
+    try:
+        with open(path, 'r', encoding='utf-8') as file:
             return json.loads(file.read())
-        except:
-            return False
+    except:
+        return False
 
 
 def main(deck, output_path, key, preview, silent, fields):
