@@ -125,6 +125,10 @@ A command line tool to find potential interest words.
 
 # Adding Example Sentences
 
+For Linux users, see the [add_sentences.sh](add_sentences.sh) script to automate everything below.
+
+For Windows users, you'll have to follow the steps below everytime you want to add sentences to your deck.
+
 Before you start, make sure to back up your deck! The commands below assume the following:
 * The deck name is `日本語`.
 * The file name to use is `fields.json`.
