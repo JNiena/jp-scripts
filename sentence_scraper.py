@@ -8,7 +8,7 @@ import requests
 def find_sentence(word, format_style, exact):
     response = requests.get(
         url = 'https://massif.la/ja/search',
-        timeout = 30,
+        timeout = 60,
         params = {
             'q': f'"{word}"' if exact else word,
             'fmt': 'json'
@@ -32,10 +32,12 @@ def main(input_path, word_field, sentence_field, overwrite, silent, format_style
     with open(input_path, 'r', encoding='utf-8') as file:
         array_data = json.loads(file.read())
 
+    failed = []
+
     for index, object_data in enumerate(array_data):
         word = object_data[word_field]
 
-        if sentence_field not in object_data or overwrite:
+        if sentence_field not in object_data or overwrite or object_data[sentence_field] == '':
             sentence = find_sentence(word, format_style, exact)
 
             if sentence != '':
@@ -49,6 +51,11 @@ def main(input_path, word_field, sentence_field, overwrite, silent, format_style
 
             elif not silent:
                 print(f'\n{index + 1}/{len(array_data)}\nFailed to gather sentence for "{word}"\n')
+
+                failed.append(word + '\n')
+
+    with open('failed.txt', 'w', encoding='utf-8') as file:
+        file.writelines(failed)
 
 
 if __name__ == "__main__":
