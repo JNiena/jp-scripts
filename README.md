@@ -131,9 +131,9 @@ Before you start, make sure to back up your deck! The commands below assume the 
 * The field containing the word is `Word`.
 * The field containing the sentence is `Sentence`.
 
-First, use [get_fields.py](get_fields.py) to get all of your words into a JSON file.
+First, use [get_fields.py](get_fields.py) to get all of your words and existing sentences into a JSON file.
 
-`python get_fields.py --deck 日本語 --output fields.json --key Word`
+`python get_fields.py --deck 日本語 --output fields.json --key Word Sentence`
 
 Second, use [sentence_scraper.py](sentence_scraper.py) to add sentences to the same JSON file.
 
